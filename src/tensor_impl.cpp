@@ -50,7 +50,7 @@ namespace st {
             if (_shape[i] == 1) continue;
             if (_stride[i] != _shape.sub_size(i+1)) return false;
         }
-        if (_stride[n_dim()-1] != 1) return false;
+        if (_shape[n_dim()-1] != 1 && _stride[n_dim()-1] != 1) return false;
         return true;
     }
 
@@ -164,7 +164,7 @@ namespace st {
 
     Alloc::NonTrivalUniquePtr<TensorImpl>
     TensorImpl::view(const Shape &shape) const {
-        CHECK_TRUE( !is_contiguous(),
+        CHECK_TRUE( is_contiguous(),
             "view() is only supported to contiguous tensor");
         CHECK_EQUAL(shape.d_size(), shape.d_size(),
             "Shape of size %d is invalid for input tensor with size %d",
