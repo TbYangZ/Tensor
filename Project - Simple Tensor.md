@@ -70,6 +70,7 @@ stide_i = \prod _{j = i+1}^kshape_j
 $$
 
 最后一维第 $k$ 维的步长为 $1$。这样，对于一个 $k$ 维坐标 $(a_1,a_2,\cdots,a_k)$ 对应到的一维即为 
+
 $$
 \begin{split}
 x &= a_1\times stride_1+a_2\times stride_2+\cdots+a_{k-1}\times stride_{k-1}+a_k\times stride_k\\
@@ -326,7 +327,7 @@ template<typename LhsType, typename RhsType>
 
 #### 2.3.2 数乘
 
-数乘可以看为一个大小为 `(1)` 的张量和另一个张量做乘法，然后在应用 Broadcast。只需对乘法进行重载即可。
+数乘可以看为一个大小为 `(1)` 的张量和另一个张量做乘法，然后再应用 Broadcast。只需对乘法进行重载即可。
 
 ```cpp
 template<typename RhsType>
